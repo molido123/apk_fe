@@ -127,7 +127,7 @@ const cardItems = ref<CardItem[]>([
   },
   {
     title: '白名单过滤',
-    iconSrc: 'src/assets/域名白名单.png',
+    iconSrc: 'src/assets/名称.png',
     description: '',
     gradient: 'linear-gradient(145deg, #43e97b, #38f9d7)',
     chartData: null

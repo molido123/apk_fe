@@ -77,9 +77,36 @@ const nextStep = () => {
   router.push('/ShowBarChart')
   console.log('下一步');
 };
+function animateResizeTo(targetWidth, targetHeight, duration) {
+  const startTime = performance.now();
+  const startWidth = window.innerWidth;
+  const startHeight = window.innerHeight;
+  const startX = window.screenX + window.outerWidth / 2;
+  const startY = window.screenY + window.outerHeight / 2;
 
+  function animate(time) {
+    const elapsed = time - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    const newWidth = startWidth + (targetWidth - startWidth) * progress;
+    const newHeight = startHeight + (targetHeight - startHeight) * progress;
+
+    const newX = startX - newWidth / 2;
+    const newY = startY - newHeight / 2;
+
+    window.moveTo(newX, newY);
+    window.resizeTo(newWidth, newHeight);
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
 onMounted(() => {
-  window.resizeTo(800, 700);
+  animateResizeTo(800, 1100, 40); // 目标尺寸和动画持续时间
+
 });
 </script>
 
