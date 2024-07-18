@@ -5,7 +5,9 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    "paths": {
+      "@/*": ["src/*"]
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -18,8 +20,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "electron",],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

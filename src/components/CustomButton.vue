@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-button" @click="handleClick" :style="borderStyle">
+  <div class="custom-button" @click="handleClick" :style="[borderStyle, { background: props.backgroundColor }]">
     <div class="button-content">
       <el-image :src="imageSrc" fit="contain" />
       <el-button type="primary" class="button">{{ buttonText }}</el-button>
@@ -27,7 +27,11 @@ const props = defineProps({
   shadowType: {
     type: String,
     default: '',
-  }
+  },
+  backgroundColor: {
+    type: String,
+    default: 'linear-gradient(135deg, #42a5f5, #478ed1)',
+  },
 });
 
 const emits = defineEmits(['click']);
@@ -56,11 +60,12 @@ const borderStyle = computed(() => ({
   justify-content: flex-end;
   padding: 1rem;
   cursor: pointer;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, background 0.3s;
   margin: 10px;
   width: 100%; /* 确保按钮容器占满父元素的宽度 */
   height: 150px; /* 你可以根据需要调整高度 */
   box-sizing: border-box;
+  border-radius: 8px; /* 添加圆角 */
 }
 .custom-button:hover {
   filter: brightness(0.95);
